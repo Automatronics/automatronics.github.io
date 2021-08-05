@@ -25,20 +25,16 @@ docker run --rm -v $PWD:/site -p 8000:8000 julia
 # cd("/site")
 ```
 
-Creating site.
+Creating this site.
 
 ```julia
 using Pkg
 Pkg.activate(".")
-Pkg.add(["Franklin", "NodeJS", "Conda"])
+Pkg.add(["Franklin", "NodeJS"])
 # Pkg.update()
 
 using NodeJS
 run(`$(npm_cmd()) install highlight.js`)
-
-using Conda
-Conda.pip_interop(true)
-Conda.pip("install", "css_html_js_minify")
 
 using Franklin
 newsite("."; template = "basic")
